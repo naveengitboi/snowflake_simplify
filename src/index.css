@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: "DM Sans", sans-serif;
+      color: var(--color-light-200);
+  }
+
+  * {
+      scrollbar-width: none;
+  }
+
+  ::-webkit-scrollbar {
+      display: none;
+  }
+}
+
+
+
+@theme{
+  --color-dark-900: #030712;
+  --color-dark-800: #1B1F29;
+  --color-dark-700: #273A48;
+
+  --color-light-200: #FFFFFF;
+  --color-light-300: #CDD1D8;
+
+  --color-rgb-one: #DF5AA4;
+  --color-rgb-two: #80D2C4;
+
+}
+
