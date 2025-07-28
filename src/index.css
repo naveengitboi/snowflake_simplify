@@ -29,10 +29,52 @@
   --color-dark-700: #273A48;
 
   --color-light-200: #FFFFFF;
-  --color-light-300: #CDD1D8;
+  --color-light-300: #aeb2b8;
 
   --color-rgb-one: #DF5AA4;
   --color-rgb-two: #80D2C4;
 
 }
 
+input, textarea
+{
+  border: 2px solid var(--color-dark-700);
+  border-radius: 0.25rem ;
+  color: var(--color-light-200);
+  padding: 0.5rem;
+  outline: none;
+}
+
+textarea
+{
+  width:100%;
+  min-height: 250px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+button 
+{
+  outline: none ;
+  cursor: pointer;
+  padding: 0.5rem 1.85rem;
+  border-radius: 0.25rem;
+}
+
+.main_font 
+{
+  font-size: 1.5rem;
+}
+.reg_font
+{
+  font-size: 1rem;
+}
+.mini_font
+{
+  font-size: 0.85rem;
+}
+
+
+svg{
+  font-size: 1rem;
+  color: var(--color-light-300);
+}

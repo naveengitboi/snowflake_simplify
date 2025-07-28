@@ -7,15 +7,30 @@
 
 }
 
-
-.main_font 
-{
-  font-size: 1.5rem;
-}
-
 .wrapper
 {
   padding: 1rem;
   width: 100vw;
   min-height: 100vh;
+}
+
+.inner_container
+{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  min-height: 85vh;
+  max-height: 85vh;
+  margin: 2rem 0;
+  gap: 2rem;
+}
+
+.actions_container
+{
+  border: 1px solid  var(--color-dark-700);
+  padding: 1rem;
+}
+
+.results_container
+{
+  padding: 1rem;
 }

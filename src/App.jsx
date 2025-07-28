@@ -1,22 +1,26 @@
 import { useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
-import Table from './actions/main'
+import Headers from './components/Headers'
+import Inputs from './pages/Inputs'
+import { Routes, Route} from 'react-router-dom'
+import Layout from './pages/Layout'
+import Setup from './elements/Setup'
+import Table from './elements/Table'
+import STask from './elements/STask'
 
 function App() {
-  const t = new Table()
 
   return (
     <div className='wrapper bg-dark-900'>
       <Navbar></Navbar>
-
-
-      <div className="inner_container">
-        <div className="actions_container"></div>
-        <div className="results_container">
-
-        </div>
-      </div>
+      <Routes>
+        <Route path='/' element={<Layout/>}>
+          <Route path='/setup' element={<Setup/>}/>
+          <Route path='/table' element={<Table/>}/>
+          <Route path='/stream_task' element={<STask/>}/>
+        </Route>
+      </Routes>
     </div>
   )
 }
