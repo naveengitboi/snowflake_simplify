@@ -2,18 +2,17 @@ import { BRONZE_LAYER, PERM_TABLE } from "./constants";
 import dedent from "dedent";
 
 class Setup {
-    constructor({ db = null, schema = null, stage = null, azure_name = null, file_format = 'csv', file_format_name = null, links = null, name_sepearator = "_", link_sepearator = ".\n", comment_delimeter = '---------------' } = {}) {
+    constructor({ db = null, schema = null, stage = null, azure_name = null, file_format = 'csv', file_format_name = null, name_sepearator = "_",  comment_delimeter = '---------------' } = {}) {
         this.db = db;
         console.log("setup ", this.db);
         this.stage = stage;
         this.schema = schema;
         this.azure_name = azure_name;
-        this.links = links;
         this.file_format = file_format;
         this.file_format_name = file_format_name;
         this.name_sepearator = name_sepearator;
-        this.link_sepearator = link_sepearator;
         this.comment_delimeter = comment_delimeter;
+
     }
     draw_margin({ txt = "" }) {
         return dedent(`${this.comment_delimeter} ${txt} ${this.comment_delimeter}
@@ -87,8 +86,17 @@ class Setup {
             STORAGE_INTEGRATION = ${this.stage}
             FILE_FORMAT = ${this.file_format_name};
             `)
+        return stage_query;
     }
-    config_setup() {
+    get_links(){
+        const azure_links_query = dedent(`
+            ${this.draw_margin({txt:'Get Azure Links to copy to get columns'})}
+            LIST @${this.db}.${this.schema}.${this.stage};
+            `)
+
+        return azure_links_query;
+    }
+    config_setup(){
         const query = dedent(`
             ${this.create_db()}
 
@@ -103,12 +111,29 @@ class Setup {
 
 
             ${this.create_stage()}
+
+
+            ${this.get_links()}
+
+
             `);
         return query;
     }
+   
+}
+
+
+class AzureLinks extends Setup{
+    constructor({db, schema, stage, links=null, link_seperator = "\n",}={}){
+        super({db, schema, stage});
+        this.links = links;
+        this.link_seperator = link_seperator;
+    }
+
     get_tables() {
         const tables = []
-        const sep_links = this.links.split(this.link_sepearator);
+        if(this.links  == null) return '';
+        const sep_links = this.links.split(this.link_seperator);
         for (let link of sep_links) {
             let l_split = link.split("/");
             const file = l_split[l_split.length - 1].split(".");
@@ -120,12 +145,26 @@ class Setup {
         }
         return tables;
     }
+
     show_tables(tables) {
         for (let tab of tables) {
             output += `${tab}\n`;
         }
         return tables;
     }
+
+    check_for_columns({links=null}={}){
+        console.log(this.get_tables())
+        const columns_query = dedent(`
+            ${this.draw_margin({txt:'Check for Tables'})}
+
+            `);
+        
+        return columns_query;
+    }
+
+
+
 }
 
 

@@ -54,10 +54,9 @@
   position: sticky;
   width: fit-content;
   top: 0;
-  right: 0;
+  left: 100%;
   cursor: pointer;
   padding: 0.25rem 0.5rem;
-  scroll-behavior: smooth;
 }
 .codeContainer:hover .copyContainer
 {

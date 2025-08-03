@@ -5,7 +5,7 @@ import {Setup, Tables } from '../actions/main'
 import Code from '../components/Code'
 
 function Layout() {
-  const s = new Setup({db:'Naveen', schema:'gold', links:'aaskd.csv, b.csv'})
+  const s = new Setup({db:'Naveen', schema:'gold'})
   const t = new Tables(s);
 
   return (
