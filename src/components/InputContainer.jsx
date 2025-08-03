@@ -1,5 +1,19 @@
 import React from 'react'
 
+
+
+function DropDown(options){
+    return (
+        <>
+            <select name="" id="" className='bg-dark-800 dropDownContainer rounded-sm'>
+                <option value="csv">CSV</option>
+                <option value="xml">XML</option>
+                <option value="json">JSON</option>
+            </select>
+        </>
+    )
+}
+
 function InputContainer(props) {
 
     const {label="", isInput =true, type="text", setInput, isDropDown=false, options=[], placeholder=""} = props.actions;
@@ -20,7 +34,7 @@ function InputContainer(props) {
                         placeholder={placeholder}/> : (
                             isDropDown ? 
                                 (
-                                    <div className="">Dropdown comes here</div>
+                                    <DropDown/>
                                 )
                             :
                             <textarea name="" placeholder={placeholder}></textarea>

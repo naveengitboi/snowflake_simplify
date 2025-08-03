@@ -1,6 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root
 {
@@ -12,14 +12,15 @@
   padding: 1rem;
   width: 100vw;
   min-height: 100vh;
+  overflow-y: hidden;
 }
 
 .inner_container
 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  min-height: 85vh;
-  max-height: 85vh;
+  min-height: 80vh;
+  max-height: 80vh;
   margin: 2rem 0;
   gap: 2rem;
 }
@@ -33,4 +34,32 @@
 .results_container
 {
   padding: 1rem;
+  height: 80vh;
+  overflow-y: scroll;
+}
+
+/* code container */
+
+.codeContainer
+{
+  font-family: "Courier Prime", monospace;
+  position: relative;
+  padding: 1rem 2rem;
+  white-space: pre-wrap;
+}
+.copyContainer
+{
+  opacity: 0;
+  transition: all 0.5s ease;
+  position: sticky;
+  width: fit-content;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  scroll-behavior: smooth;
+}
+.codeContainer:hover .copyContainer
+{
+  opacity: 1;
 }

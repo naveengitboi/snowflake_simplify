@@ -35,6 +35,10 @@
   --color-rgb-two: #80D2C4;
 
 }
+body
+{
+  background-color: var(--color-dark-900);
+}
 
 input, textarea
 {
@@ -52,6 +56,13 @@ textarea
   max-height: 300px;
   overflow-y: auto;
 }
+
+.dropDownContainer{
+  width: 80%;
+  padding: 0.85rem 1.35rem;
+}
+
+
 button 
 {
   outline: none ;
